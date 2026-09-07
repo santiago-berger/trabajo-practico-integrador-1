@@ -6,6 +6,7 @@ import { connectDB } from "./src/config/database.js";
 import "./src/models/index.js"
 import { authRouter } from "./src/routes/auth.routes.js";
 import { userRouter } from "./src/routes/user.routes.js";
+import { tagRouter } from "./src/routes/tag.routes.js";
 
 dotenv.config();
 
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use("/api", authRouter);
-app.use("/api", userRouter)
+app.use("/api", userRouter);
+app.use("/api", tagRouter);
 
 app.listen(PORT, async () => {
   await connectDB();
